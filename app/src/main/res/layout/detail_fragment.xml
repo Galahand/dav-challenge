@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="beer"
+            type="com.example.platzi_challenge.data.Beer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="@dimen/medium_spacing"
+                android:paddingStart="@dimen/medium_spacing"
+                android:paddingEnd="@dimen/medium_spacing"
+                android:paddingBottom="@dimen/beer_detail_bottom_padding">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/name_tv"
+                    style="@style/TextAppearance.AppCompat.Display1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/large_spacing"
+                    android:gravity="center"
+                    android:text="@{beer.name}"
+                    tools:text="My beer name"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/overview_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/name_tv">
+
+                    <ImageView
+                        android:id="@+id/beer_iv"
+                        android:contentDescription="@null"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/beer_detail_image_size"
+                        android:paddingStart="@dimen/large_spacing"
+                        android:paddingEnd="@dimen/large_spacing"
+                        android:layout_weight="1"
+                        imageUrl="@{beer.imageUrl}" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="3">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tagline_tv"
+                            style="@style/TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/small_spacing"
+                            android:paddingTop="@dimen/standard_spacing"
+                            android:paddingBottom="@dimen/standard_spacing"
+                            android:paddingStart="@dimen/x_standard_spacing"
+                            android:paddingEnd="@dimen/x_standard_spacing"
+                            android:text="@{beer.tagline}"
+                            tools:text="My beer tag line"
+                            android:background="@drawable/beer_tagline_border"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/description_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/standard_spacing"
+                            android:justificationMode="inter_word"
+                            android:text="@{beer.description}"
+                            tools:text="My beer description that is supposed to be somewhat large so I should write a lot of text." />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/stats_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/overview_ll"
+                    android:layout_marginTop="@dimen/x_large_spacing"
+                    android:paddingTop="@dimen/x_standard_spacing"
+                    android:paddingBottom="@dimen/x_standard_spacing"
+                    android:elevation="5dp"
+                    android:background="@drawable/stats_background">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/stats_title_tv"
+                        style="@style/TextAppearance.AppCompat.Title"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/beer_stats"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/abv_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/alcohol_by_volume"
+                        android:padding="@dimen/x_standard_spacing"
+                        app:layout_constraintTop_toBottomOf="@id/stats_title_tv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ibu_tv"
+                        app:beer_stat_quantity="@{beer.abv}"
+                        tools:text="4.1\nABV"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ibu_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="@string/international_bitterness_units"
+                        app:layout_constraintTop_toBottomOf="@id/stats_title_tv"
+                        app:layout_constraintStart_toEndOf="@id/abv_tv"
+                        app:layout_constraintEnd_toStartOf="@id/ph_tv"
+                        app:beer_stat_quantity="@{beer.ibu}"
+                        tools:text="4.1\nABV"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ph_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/x_standard_spacing"
+                        android:text="@string/potential_of_hydrogen"
+                        app:layout_constraintTop_toBottomOf="@id/stats_title_tv"
+                        app:layout_constraintStart_toEndOf="@id/ibu_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:beer_stat_quantity="@{beer.ph}"
+                        tools:text="4.1\nABV"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tips_title_tv"
+                    style="@style/TextAppearance.AppCompat.Headline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_margin="@dimen/x_large_spacing"
+                    android:text="@string/brewers_tips"
+                    app:layout_constraintTop_toBottomOf="@id/stats_cl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tips_content_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_spacing"
+                    android:justificationMode="inter_word"
+                    android:text="@{beer.brewersTips}"
+                    app:layout_constraintTop_toBottomOf="@id/tips_title_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Be careful not to collect too much wort from the mash. Once the sugars are all washed out there are some very unpleasant grainy tasting compounds that can be extracted into the wort."/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/find_more_beer"
+            android:layout_margin="@dimen/large_spacing"
+            android:background="@drawable/stats_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

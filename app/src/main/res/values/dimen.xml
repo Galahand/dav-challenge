@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_spacing">4dp</dimen>
+    <dimen name="standard_spacing">8dp</dimen>
+    <dimen name="x_standard_spacing">12dp</dimen>
+    <dimen name="medium_spacing">16dp</dimen>
+    <dimen name="large_spacing">24dp</dimen>
+    <dimen name="x_large_spacing">32dp</dimen>
+
+    <dimen name="beer_stat_quantity_size">40dp</dimen>
+    <dimen name="overview_item_image_size">100dp</dimen>
+
+    <dimen name="beer_detail_image_size">200dp</dimen>
+    <dimen name="beer_detail_bottom_padding">100dp</dimen>
+</resources>

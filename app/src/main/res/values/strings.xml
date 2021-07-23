@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">platzi_challenge</string>
+    <string name="alcohol_by_volume">Alcohol by volume</string>
+    <string name="international_bitterness_units">International bitterness units</string>
+    <string name="potential_of_hydrogen">Potential of hydrogen</string>
+    <string name="beer_stats">Beer stats</string>
+    <string name="brewers_tips">Brewers tips 👌🏽</string>
+    <string name="not_applicable">NA</string>
+    <string name="find_more_beer">Find more beer</string>
+</resources>
